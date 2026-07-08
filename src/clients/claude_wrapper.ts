@@ -15,7 +15,7 @@ export async function sendToClaude(envelope: any) {
       headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey },
       body: JSON.stringify({ model: process.env.CLAUDE_MODEL || 'claude-1', messages: [{ role: 'user', content: userContent }] })
     });
-    const json = await res.json();
+    const json = (await res.json()) as any;
     const text = json?.content?.[0]?.text || JSON.stringify(json);
     return { ok: true, reply: text };
   } catch (err: any) {

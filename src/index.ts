@@ -113,7 +113,7 @@ app.post('/git', async (req, res) => {
   try {
     const r = await runGit(action, params);
     if (r.ok) return res.json({ ok: true, result: r });
-    return res.status(500).json({ ok: false, error: r.err || r });
+    return res.status(500).json({ ok: false, error: ('err' in r ? r.err : undefined) || r });
   } catch (e: any) {
     return res.status(500).json({ ok: false, error: String(e) });
   }
