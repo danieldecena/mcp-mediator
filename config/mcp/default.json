@@ -1,0 +1,5 @@
+{
+  "default": {
+    "tools": ["file_read", "file_write", "run_command"]
+  }
+}
